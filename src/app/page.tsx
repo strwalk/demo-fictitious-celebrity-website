@@ -7,13 +7,13 @@ export default function Home() {
         <h1>トップ</h1>
         <nav className="mt-10">
           <ul className="grid grid-cols-3 gap-10">
-            <li className="bg-blue-200 py-3 text-center rounded-lg">
+            <li className="bg-green py-3 text-center rounded-lg text-white">
               <Link href="/profile">プロフィール</Link>
             </li>
-            <li className="bg-blue-200 py-3 text-center rounded-lg">
+            <li className="bg-green py-3 text-center rounded-lg text-white">
               <Link href="/news">ニュース</Link>
             </li>
-            <li className="bg-blue-200 py-3 text-center rounded-lg">
+            <li className="bg-green py-3 text-center rounded-lg text-white">
               <Link href="/blogs">ブログ</Link>
             </li>
           </ul>
