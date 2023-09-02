@@ -14,6 +14,11 @@ const config: Config = {
         lg: '976px',
         xl: '1440px',
       },
+      colors: {
+        green: '#85c39d',
+        'green-light': '#e8f0ee',
+        gray: '#e6e6e6',
+      },
     },
   },
   plugins: [],
