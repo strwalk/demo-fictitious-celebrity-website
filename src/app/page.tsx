@@ -5,6 +5,25 @@ import imageCoffee from '../../public/images/coffee.jpeg';
 import imageSofa from '../../public/images/sofa.jpeg';
 import imageFlower from '../../public/images/flower.jpeg';
 
+interface DetailLinkProps {
+  href: string;
+  title: string;
+}
+
+const DetailLink = ({ href, title }: DetailLinkProps) => {
+  return (
+    <section className="mt-10 flex justify-center">
+      <Link
+        href={href}
+        className="flex justify-center gap-2 items-center px-10 py-2.5 text-center rounded-md shadow bg-green text-white hover:bg-green-light hover:text-black"
+      >
+        <span className="text-lg">{title}</span>
+        <HiOutlineChevronRight />
+      </Link>
+    </section>
+  );
+};
+
 export default function Home() {
   return (
     <main className="relative">
@@ -30,15 +49,7 @@ export default function Home() {
               <h2 className="text-4xl text-center">News</h2>
               <p className="mt-4">青星ヒカリの最新ニュースをお届け</p>
               <p>今後の予定や、メディア出演情報等を掲載しています</p>
-              <section className="mt-10 flex justify-center">
-                <Link
-                  href="/news"
-                  className="flex justify-center gap-2 items-center px-10 py-2.5 text-center rounded-md shadow bg-green text-white hover:bg-green-light hover:text-black"
-                >
-                  <span className="text-lg">ニュース一覧</span>
-                  <HiOutlineChevronRight />
-                </Link>
-              </section>
+              <DetailLink href="/news" title="ニュース一覧" />
             </section>
           </section>
           <section className="px-8 md:px-0">
@@ -53,15 +64,7 @@ export default function Home() {
             <section>
               <h2 className="text-4xl text-center">Profile</h2>
               <p className="mt-4">青星ヒカリのプロフィールや来歴はこちらから</p>
-              <section className="mt-10 flex justify-center">
-                <Link
-                  href="/profile"
-                  className="flex justify-center gap-2 items-center px-10 py-2.5 text-center rounded-md shadow bg-green text-white hover:bg-green-light hover:text-black"
-                >
-                  <span className="text-lg">プロフィール</span>
-                  <HiOutlineChevronRight />
-                </Link>
-              </section>
+              <DetailLink href="/profile" title="プロフィール" />
             </section>
           </section>
         </section>
@@ -70,15 +73,7 @@ export default function Home() {
             <section>
               <h2 className="text-4xl text-center">Blog</h2>
               <p className="mt-4">青星ヒカリのブログを読む</p>
-              <section className="mt-10 flex justify-center">
-                <Link
-                  href="/blogs"
-                  className="flex justify-center gap-2 items-center px-10 py-2.5 text-center rounded-md shadow bg-green text-white hover:bg-green-light hover:text-black"
-                >
-                  <span className="text-lg">ブログ記事一覧</span>
-                  <HiOutlineChevronRight />
-                </Link>
-              </section>
+              <DetailLink href="/blogs" title="ブログ" />
             </section>
           </section>
           <section className="px-8 md:px-0">
