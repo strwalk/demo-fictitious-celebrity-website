@@ -1,14 +1,27 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { HiOutlineChevronRight } from 'react-icons/hi';
 import imageCoffee from '../../public/images/coffee.jpeg';
 import imageSofa from '../../public/images/sofa.jpeg';
 import imageFlower from '../../public/images/flower.jpeg';
 
+interface ImagesProps {
+  src: StaticImageData;
+  alt: string;
+}
+
 interface DetailLinkProps {
   href: string;
   title: string;
 }
+
+const ContentsImage = ({ src, alt }: ImagesProps) => {
+  return (
+    <section className="px-8 md:px-0">
+      <Image src={src} alt={alt} />
+    </section>
+  );
+};
 
 const DetailLink = ({ href, title }: DetailLinkProps) => {
   return (
@@ -52,14 +65,10 @@ export default function Home() {
               <DetailLink href="/news" title="ニュース一覧" />
             </section>
           </section>
-          <section className="px-8 md:px-0">
-            <Image src={imageCoffee} alt="コーヒーの画像" />
-          </section>
+          <ContentsImage src={imageCoffee} alt="コーヒーの画像" />
         </section>
         <section className="grid grid-cols-1 md:grid-cols-2 justify-center gap-6 py-16 bg-green-light">
-          <section className="px-8 md:px-0">
-            <Image src={imageSofa} alt="家具の画像" />
-          </section>
+          <ContentsImage src={imageSofa} alt="imageSofa" />
           <section className="flex justify-center items-center">
             <section>
               <h2 className="text-4xl text-center">Profile</h2>
@@ -76,9 +85,7 @@ export default function Home() {
               <DetailLink href="/blogs" title="ブログ" />
             </section>
           </section>
-          <section className="px-8 md:px-0">
-            <Image src={imageFlower} alt="花束の画像" />
-          </section>
+          <ContentsImage src={imageFlower} alt="花束の画像" />
         </section>
       </section>
     </main>
