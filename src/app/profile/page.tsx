@@ -3,7 +3,7 @@ import imageLion from '../../../public/images/lion.jpeg';
 
 export default function Profile() {
   return (
-    <main className="min-h-screen bg-green-light">
+    <main className="bg-green-light">
       <section className="pt-28 pb-20 flex justify-center px-5 sm:px-10 xl:px-20">
         <section className="bg-white rounded-2xl shadow-md w-full sm:mx-5 md:mx-10 lg:mx-20 px-5 sm:px-10 lg:px-5 py-16 flex justify-center">
           <section>
