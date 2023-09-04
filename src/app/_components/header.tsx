@@ -27,7 +27,8 @@ export default function Header() {
           <span className="ml-[0.1rem] text-sm">Official Website</span>
         </Link>
         <nav>
-          <ul className="flex sm:text-lg">
+          <ul className="flex flex-wrap sm:text-lg">
+            <MenuLink href="/" title="Top" />
             <MenuLink href="/news" title="News" />
             <MenuLink href="/profile" title="Profile" />
             <MenuLink href="/blogs" title="Blog" />
