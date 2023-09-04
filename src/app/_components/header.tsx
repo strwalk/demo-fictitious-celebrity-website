@@ -28,6 +28,7 @@ export default function Header() {
         </Link>
         <nav>
           <ul className="flex sm:text-lg">
+            <MenuLink href="/" title="Top" />
             <MenuLink href="/news" title="News" />
             <MenuLink href="/profile" title="Profile" />
             <MenuLink href="/blogs" title="Blog" />
