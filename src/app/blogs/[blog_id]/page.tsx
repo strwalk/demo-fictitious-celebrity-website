@@ -54,9 +54,26 @@ export default function Blog({ params }: Params) {
               <p>キリンの首はとても長いです。</p>
               <p>キリンは黄色でした</p>
               <div>記事ID: {blogId}</div>
-              <p className="mt-4 text-right text-sm text-gray-800">
-                2023.04.01
-              </p>
+            </section>
+            <section className="mt-14 flex gap-5 items-center bg-gray py-3 px-4">
+              <Link href="/profile">
+                <Image
+                  src="/images/lion.jpeg"
+                  width={50}
+                  height={50}
+                  alt="プロフィール画像"
+                  className="w-20 h-20 object-cover rounded-full"
+                />
+              </Link>
+              <section>
+                <Link href="/profile">青星ヒカリ</Link>
+                <p className="text-xs mt-1">
+                  2005年10月10日生まれ。大手芸能事務所所属のタレント
+                </p>
+                <p className="text-xs mt-1">
+                  世界で活躍するタレントを目標に日々奮闘中
+                </p>
+              </section>
             </section>
           </section>
         </section>
