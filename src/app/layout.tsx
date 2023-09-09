@@ -14,8 +14,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="relative min-h-screen">
+    <html lang="ja">
+      <body className="relative">
         <Header />
         {children}
         <Footer />
