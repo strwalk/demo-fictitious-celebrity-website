@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { profileName } from '../_constants';
 
 export default function Profile() {
   return (
@@ -18,7 +19,7 @@ export default function Profile() {
               />
             </section>
             <section className="flex flex-wrap gap-x-1 items-end mt-10">
-              <h2 className="text-3xl">青星ヒカリ</h2>
+              <h2 className="text-3xl">{profileName}</h2>
               <p>Hikari Aohoshi</p>
             </section>
             <ul className="mt-6 leading-7">

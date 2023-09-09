@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { profileName } from '../_constants';
 
 interface MenuLinkProps {
   href: string;
@@ -23,7 +24,7 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 bg-white z-50">
       <section className="flex justify-between items-center">
         <Link href="/" className="block px-5 py-3 hover:bg-green-light">
-          <span className="text-xl">青星ヒカリ</span>
+          <span className="text-xl">{profileName}</span>
           <span className="ml-[0.1rem] text-sm">Official Website</span>
         </Link>
         <nav>

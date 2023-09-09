@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { profileName } from '@/app/_constants';
 
 interface Props {
   size: Size;
@@ -6,14 +7,13 @@ interface Props {
 }
 
 export default function AvatarSimpleName({ size, hasLink = false }: Props) {
-  const avatarName = '青星ヒカリ';
   const styles = size === 'extraSmall' ? 'text-xs' : 'text-sm';
 
   return hasLink ? (
     <Link href="/profile" className={styles}>
-      {avatarName}
+      {profileName}
     </Link>
   ) : (
-    <p className={styles}>{avatarName}</p>
+    <p className={styles}>{profileName}</p>
   );
 }

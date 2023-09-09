@@ -1,3 +1,4 @@
+import { profileName } from '@/app/_constants';
 import AvatarIcon from '../avatar-icon';
 
 export default function AvatarProfile() {
@@ -5,7 +6,7 @@ export default function AvatarProfile() {
     <section className="flex gap-5 items-center bg-gray py-3 px-4">
       <AvatarIcon size="big" hasLink={true} />
       <section>
-        <p>青星ヒカリ</p>
+        <p>{profileName}</p>
         <p className="text-xs mt-1">
           2005年10月10日生まれ。大手芸能事務所所属のタレント
         </p>
