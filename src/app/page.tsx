@@ -4,6 +4,7 @@ import { HiOutlineChevronRight } from 'react-icons/hi';
 import imageCoffee from '../../public/images/coffee.jpeg';
 import imageSofa from '../../public/images/sofa.jpeg';
 import imageFlower from '../../public/images/flower.jpeg';
+import { profileName } from './_constants';
 
 interface ImagesProps {
   src: StaticImageData;
@@ -50,7 +51,9 @@ export default function Home() {
         />
         <section className="relative top-40 sm:absolute sm:top-[40%] sm:left-[10%]">
           <h1 className="flex flex-col text-center">
-            <span className="text-4xl md:text-6xl lg:text-7xl">青星ヒカリ</span>
+            <span className="text-4xl md:text-6xl lg:text-7xl">
+              {profileName}
+            </span>
             <span className="mt-1 md:mt-3 md:text-xl">Official Website</span>
           </h1>
         </section>
@@ -60,7 +63,7 @@ export default function Home() {
           <section className="flex justify-center items-center">
             <section>
               <h2 className="text-4xl text-center">News</h2>
-              <p className="mt-4">青星ヒカリの最新ニュースをお届け</p>
+              <p className="mt-4">{profileName}の最新ニュースをお届け</p>
               <p>今後の予定や、メディア出演情報等を掲載しています</p>
               <DetailLink href="/news" title="ニュース一覧" />
             </section>
@@ -72,7 +75,9 @@ export default function Home() {
           <section className="flex justify-center items-center">
             <section>
               <h2 className="text-4xl text-center">Profile</h2>
-              <p className="mt-4">青星ヒカリのプロフィールや来歴はこちらから</p>
+              <p className="mt-4">
+                {profileName}のプロフィールや来歴はこちらから
+              </p>
               <DetailLink href="/profile" title="プロフィール" />
             </section>
           </section>
@@ -81,7 +86,7 @@ export default function Home() {
           <section className="flex justify-center items-center">
             <section>
               <h2 className="text-4xl text-center">Blog</h2>
-              <p className="mt-4">青星ヒカリのブログを読む</p>
+              <p className="mt-4">{profileName}のブログを読む</p>
               <DetailLink href="/blogs" title="ブログ" />
             </section>
           </section>

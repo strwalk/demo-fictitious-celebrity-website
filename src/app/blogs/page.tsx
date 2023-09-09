@@ -1,14 +1,15 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { AvatarSimple } from '../_components/avatar';
 
-interface BlogCard {
+interface BlogCardProps {
   href: string;
   imageSrc: string;
   title: string;
   description: string;
 }
 
-const BlogCard = ({ href, imageSrc, title, description }: BlogCard) => {
+const BlogCard = ({ href, imageSrc, title, description }: BlogCardProps) => {
   return (
     <Link
       href={href}
@@ -24,7 +25,8 @@ const BlogCard = ({ href, imageSrc, title, description }: BlogCard) => {
         />
       </section>
       <h2 className="mt-4 text-lg line-clamp-2">{title}</h2>
-      <p className="text-xs mt-2 line-clamp-2">{description}</p>
+      <p className="text-xs mt-2 line-clamp-2 mb-4">{description}</p>
+      <AvatarSimple size="extraSmall" date="2023年1月1日 8:00" />
     </Link>
   );
 };

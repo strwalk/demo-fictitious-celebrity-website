@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import Image from 'next/image';
+import { AvatarSimple, AvatarProfile } from '@/app/_components/avatar';
 
 interface Params {
   params: {
@@ -12,7 +12,7 @@ export default function Blog({ params }: Params) {
 
   return (
     <main className="min-h-screen">
-      <section className="flex justify-center pt-20 pb-20">
+      <section className="flex justify-center pt-20 pb-24">
         <section>
           <section className="flex justify-center">
             <Image
@@ -20,29 +20,20 @@ export default function Blog({ params }: Params) {
               width={300}
               height={300}
               alt="キャンディーの画像"
+              priority={true}
               className="h-[18rem] w-[34rem] object-cover"
             />
           </section>
           <section className="sm:w-[28rem] md:w-[35rem] px-4">
-            <h1 className="text-3xl font-bold mt-10">動物園に行ってみた</h1>
-            <section className="mt-4 flex gap-3 items-center">
-              <Link href="/profile">
-                <Image
-                  src="/images/lion.jpeg"
-                  width={50}
-                  height={50}
-                  alt="プロフィール画像"
-                  className="w-12 h-12 object-cover rounded-full"
-                />
-              </Link>
-              <section>
-                <Link href="/profile" className="text-sm">
-                  青星ヒカリ
-                </Link>
-                <p className="text-xs text-slate-400">2023年4月1日 10:00</p>
-              </section>
-            </section>
-            <section className="mt-10">
+            <h1 className="text-3xl font-bold mt-10 mb-4">
+              動物園に行ってみた
+            </h1>
+            <AvatarSimple
+              size="small"
+              date="2023年4月1日 10:00"
+              hasLink={true}
+            />
+            <section className="mt-10 mb-12">
               <p>最近気になっていた動物園に行ってみました</p>
               <h2 className="text-xl my-2 font-bold">1. ゾウのエリア</h2>
               <p>ゾウの鼻はとても長いです。</p>
@@ -55,26 +46,7 @@ export default function Blog({ params }: Params) {
               <p>キリンは黄色でした</p>
               <div>記事ID: {blogId}</div>
             </section>
-            <section className="mt-14 flex gap-5 items-center bg-gray py-3 px-4">
-              <Link href="/profile">
-                <Image
-                  src="/images/lion.jpeg"
-                  width={50}
-                  height={50}
-                  alt="プロフィール画像"
-                  className="w-20 h-20 object-cover rounded-full"
-                />
-              </Link>
-              <section>
-                <Link href="/profile">青星ヒカリ</Link>
-                <p className="text-xs mt-1">
-                  2005年10月10日生まれ。大手芸能事務所所属のタレント
-                </p>
-                <p className="text-xs mt-1">
-                  世界で活躍するタレントを目標に日々奮闘中
-                </p>
-              </section>
-            </section>
+            <AvatarProfile />
           </section>
         </section>
       </section>
