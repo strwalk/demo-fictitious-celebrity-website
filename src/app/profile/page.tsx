@@ -23,12 +23,12 @@ export default function Profile() {
               <li>職業：タレント</li>
             </ul>
             <ul className="mt-6 text-sm sm:text-base leading-7 sm:leading-7">
-              <li>2000年、大手芸能事務所にスカウトされ、デビュー</li>
-              <li>2005年、写真集「Light」を出版</li>
-              <li>2002年、レギュラー番組「ブルーなStar」がスタート</li>
-              <li>2020年、エッセイ本「Sirius」を出版</li>
-              <li>2020年、ドラマ「universe」に出演</li>
-              <li>2020年、若手新人女優賞を受賞</li>
+              <li>2000年　大手芸能事務所にスカウトされ、デビュー</li>
+              <li>2005年　写真集「Light」を出版</li>
+              <li>2002年　レギュラー番組「ブルーなStar」がスタート</li>
+              <li>2020年　エッセイ本「Sirius」を出版</li>
+              <li>2020年　ドラマ「universe」に出演</li>
+              <li>2020年　若手新人女優賞を受賞</li>
             </ul>
           </section>
         </section>
