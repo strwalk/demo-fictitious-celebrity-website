@@ -13,7 +13,7 @@ interface Params {
 interface News {
   id: string;
   title: string;
-  contents: string;
+  contents?: string;
   createdAt: string;
 }
 
@@ -54,11 +54,12 @@ export default async function NewsArticle({ params }: Params) {
               {news.title}
             </h1>
             <section className="mt-5 px-1 leading-8">
-              {convertToAnArrayOfNewlineCodes(news.contents).map(
-                (sentence: string, index: number) => (
-                  <p key={index}>{sentence}</p>
-                )
-              )}
+              {news.contents &&
+                convertToAnArrayOfNewlineCodes(news.contents).map(
+                  (sentence: string, index: number) => (
+                    <p key={index}>{sentence}</p>
+                  )
+                )}
               <p className="mt-4 text-right text-sm text-gray-800">
                 {formatWithCommaSeparatedDates(news.createdAt)}
               </p>
