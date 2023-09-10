@@ -1,22 +1,44 @@
 import Link from 'next/link';
+import { formatWithCommaSeparatedDates } from '../_utils';
 
-interface NewsItemProps {
-  newsId: string;
+interface News {
+  id: string;
   title: string;
-  year: string;
-  month: string;
-  date: string;
+  createdAt: string;
 }
 
-const NewsItem = ({ newsId, title, year, month, date }: NewsItemProps) => {
+async function getNewsList() {
+  const response = await fetch(`${process.env.HYGRAPH_ENDPOINT}`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${process.env.PERMANENT_AUTH_TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query: `
+        query NewsList {
+          newsList {
+            id
+            title
+            createdAt
+          }
+        }
+      `,
+    }),
+  });
+  const json = await response.json();
+  return json.data.newsList;
+}
+
+const NewsItem = ({ id, title, createdAt }: News) => {
   return (
     <li className="border-b border-slate-200">
       <Link
-        href={`/news/${newsId}`}
+        href={`/news/${id}`}
         className="flex flex-wrap py-2 sm:py-4 hover:bg-slate-50 px-2"
       >
-        <section className="w-20">
-          {year}.{month}.{date}
+        <section className="w-28">
+          {formatWithCommaSeparatedDates(createdAt)}
         </section>
         <section>{title}</section>
       </Link>
@@ -24,7 +46,9 @@ const NewsItem = ({ newsId, title, year, month, date }: NewsItemProps) => {
   );
 };
 
-export default function NewsList() {
+export default async function NewsList() {
+  const newsList: News[] = await getNewsList();
+
   return (
     <main className="bg-green-light min-h-screen">
       <section className="flex justify-center pt-28 pb-20">
@@ -32,48 +56,14 @@ export default function NewsList() {
           <h1 className="text-center text-3xl">News</h1>
           <section>
             <ul>
-              <NewsItem
-                newsId="news1"
-                title="初主演ドラマが決定"
-                year="2023"
-                month="4"
-                date="1"
-              />
-              <NewsItem
-                newsId="news2"
-                title="握手会に来てください！"
-                year="2023"
-                month="3"
-                date="1"
-              />
-              <NewsItem
-                newsId="news3"
-                title="写真集の発売が決定"
-                year="2023"
-                month="2"
-                date="1"
-              />
-              <NewsItem
-                newsId="news4"
-                title="人気グッズの再販が決まりました"
-                year="2023"
-                month="1"
-                date="1"
-              />
-              <NewsItem
-                newsId="news5"
-                title="バラエティ番組の司会に初挑戦"
-                year="2022"
-                month="12"
-                date="1"
-              />
-              <NewsItem
-                newsId="news6"
-                title="サイン会があります"
-                year="2022"
-                month="11"
-                date="1"
-              />
+              {newsList.map((news: News) => (
+                <NewsItem
+                  key={news.id}
+                  id={news.id}
+                  title={news.title}
+                  createdAt={news.createdAt}
+                />
+              ))}
             </ul>
           </section>
         </section>
