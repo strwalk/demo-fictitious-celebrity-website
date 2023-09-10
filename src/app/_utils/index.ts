@@ -1,4 +1,11 @@
 import { convertToAnArrayOfNewlineCodes } from './converts';
-import { formatWithCommaSeparatedDates } from './format-date';
+import {
+  formatWithCommaSeparatedDates,
+  formatDateTimeInKanjiSeparator,
+} from './format-date';
 
-export { convertToAnArrayOfNewlineCodes, formatWithCommaSeparatedDates };
+export {
+  convertToAnArrayOfNewlineCodes,
+  formatWithCommaSeparatedDates,
+  formatDateTimeInKanjiSeparator,
+};
