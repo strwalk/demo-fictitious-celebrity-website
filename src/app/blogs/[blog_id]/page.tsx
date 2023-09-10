@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { AvatarSimple, AvatarProfile } from '@/app/_components/avatar';
+import { formatDateTimeInKanjiSeparator } from '@/app/_utils';
 
 interface Params {
   params: {
@@ -7,8 +8,48 @@ interface Params {
   };
 }
 
-export default function Blog({ params }: Params) {
+interface Blog {
+  id: string;
+  title: string;
+  contents?: string;
+  thumbnail?: {
+    id: string;
+    url: string;
+  };
+  createdAt: string;
+}
+
+async function getBlogArticle(blogId: string) {
+  const response = await fetch(`${process.env.HYGRAPH_ENDPOINT}`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${process.env.PERMANENT_AUTH_TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query: `
+        query Blog {
+          blog(where: {id: "${blogId}"}) {
+            id
+            title
+            contents
+            thumbnail {
+              id
+              url
+            }
+            createdAt
+          }
+        }
+      `,
+    }),
+  });
+  const json = await response.json();
+  return json.data.blog;
+}
+
+export default async function Blog({ params }: Params) {
   const blogId = params.blog_id;
+  const blog: Blog = await getBlogArticle(blogId);
 
   return (
     <main className="min-h-screen">
@@ -16,36 +57,22 @@ export default function Blog({ params }: Params) {
         <section>
           <section className="flex justify-center">
             <Image
-              src="/images/candy.jpeg"
+              src={blog.thumbnail?.url ?? ''}
               width={300}
               height={300}
-              alt="キャンディーの画像"
+              alt={blog.title}
               priority={true}
               className="h-[18rem] w-[34rem] object-cover"
             />
           </section>
           <section className="sm:w-[28rem] md:w-[35rem] px-4">
-            <h1 className="text-3xl font-bold mt-10 mb-4">
-              動物園に行ってみた
-            </h1>
+            <h1 className="text-3xl font-bold mt-10 mb-4">{blog.title}</h1>
             <AvatarSimple
               size="small"
-              date="2023年4月1日 10:00"
+              date={formatDateTimeInKanjiSeparator(blog.createdAt)}
               hasLink={true}
             />
-            <section className="mt-10 mb-12">
-              <p>最近気になっていた動物園に行ってみました</p>
-              <h2 className="text-xl my-2 font-bold">1. ゾウのエリア</h2>
-              <p>ゾウの鼻はとても長いです。</p>
-              <p>
-                ゾウの鼻はとても長いです。ゾウの鼻はとても長いです。ゾウの鼻はとても長いです。ゾウの鼻はとても長いです。ゾウの鼻はとても長いです。ゾウの鼻はとても長いです。ゾウの鼻はとても長いです。
-              </p>
-              <p>水浴びをしていました。</p>
-              <h2 className="text-xl my-2 font-bold">2. キリンのエリア</h2>
-              <p>キリンの首はとても長いです。</p>
-              <p>キリンは黄色でした</p>
-              <div>記事ID: {blogId}</div>
-            </section>
+            <section className="mt-10 mb-12">{blog.contents}</section>
             <AvatarProfile />
           </section>
         </section>

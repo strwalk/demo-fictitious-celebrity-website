@@ -1,4 +1,8 @@
 import Link from 'next/link';
+import {
+  convertToAnArrayOfNewlineCodes,
+  formatWithCommaSeparatedDates,
+} from '@/app/_utils';
 
 interface Params {
   params: {
@@ -6,8 +10,40 @@ interface Params {
   };
 }
 
-export default function NewsArticle({ params }: Params) {
+interface News {
+  id: string;
+  title: string;
+  contents?: string;
+  createdAt: string;
+}
+
+async function getNewsArticle(newsId: string) {
+  const response = await fetch(`${process.env.HYGRAPH_ENDPOINT}`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${process.env.PERMANENT_AUTH_TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query: `
+        query News {
+          news(where: {id: "${newsId}"}) {
+            id
+            title
+            contents
+            createdAt
+          }
+        }
+      `,
+    }),
+  });
+  const json = await response.json();
+  return json.data.news;
+}
+
+export default async function NewsArticle({ params }: Params) {
   const newsId = params.news_id;
+  const news: News = await getNewsArticle(newsId);
 
   return (
     <main className="bg-green-light min-h-screen">
@@ -15,15 +51,17 @@ export default function NewsArticle({ params }: Params) {
         <section className="w-full max-w-screen-md mx-10">
           <section className="bg-white rounded-lg shadow-md px-16 pt-10 pb-6 mt-6">
             <h1 className="text-xl text-center border-b-[1.4px] border-green pb-2 px-1">
-              写真集の発売が決定
+              {news.title}
             </h1>
-            <section className="mt-5 px-1">
-              <p>この度、青星ヒカリの1st写真集の発売が決定しました！</p>
-              <p>詳細につきましては、近日公開となります。</p>
-              <p>ぜひ、チェックしてみてください。</p>
-              <p>記事ID: {newsId}</p>
+            <section className="mt-5 px-1 leading-8">
+              {news.contents &&
+                convertToAnArrayOfNewlineCodes(news.contents).map(
+                  (sentence: string, index: number) => (
+                    <p key={index}>{sentence}</p>
+                  )
+                )}
               <p className="mt-4 text-right text-sm text-gray-800">
-                2023.04.01
+                {formatWithCommaSeparatedDates(news.createdAt)}
               </p>
             </section>
           </section>
