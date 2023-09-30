@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import { RichText } from '@graphcms/rich-text-react-renderer';
+import { ElementNode } from '@graphcms/rich-text-types';
 import { AvatarSimple, AvatarProfile } from '@/app/_components/avatar';
 import { formatDateTimeInKanjiSeparator } from '@/app/_utils';
 
@@ -11,7 +13,11 @@ interface Params {
 interface Blog {
   id: string;
   title: string;
-  contents?: string;
+  contents?: {
+    raw: {
+      children: ElementNode[];
+    };
+  };
   thumbnail?: {
     id: string;
     url: string;
@@ -32,7 +38,9 @@ async function getBlogArticle(blogId: string) {
           blog(where: {id: "${blogId}"}) {
             id
             title
-            contents
+            contents {
+              raw
+            }
             thumbnail {
               id
               url
@@ -72,7 +80,23 @@ export default async function Blog({ params }: Params) {
               date={formatDateTimeInKanjiSeparator(blog.createdAt)}
               hasLink={true}
             />
-            <section className="mt-10 mb-12">{blog.contents}</section>
+            {blog.contents && (
+              <section className="mt-10 mb-12">
+                <RichText
+                  content={blog.contents.raw}
+                  renderers={{
+                    h2: ({ children }) => (
+                      <h2 className="text-xl font-bold mt-6 mb-2">
+                        {children}
+                      </h2>
+                    ),
+                    p: ({ children }) => (
+                      <p className="leading-7">{children}</p>
+                    ),
+                  }}
+                />
+              </section>
+            )}
             <AvatarProfile />
           </section>
         </section>
