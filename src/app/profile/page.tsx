@@ -15,7 +15,7 @@ export default function Profile() {
                 height={580}
                 priority={true}
                 alt="プロフィール画像"
-                className="w-[33rem] h-[20rem] object-cover object-right-top"
+                className="w-[33rem] h-[20rem] object-cover object-center md:object-right-top"
               />
             </section>
             <section className="flex flex-wrap gap-x-1 items-end mt-10">
