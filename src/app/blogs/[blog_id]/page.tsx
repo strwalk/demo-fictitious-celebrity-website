@@ -3,6 +3,7 @@ import { RichText } from '@graphcms/rich-text-react-renderer';
 import { ElementNode } from '@graphcms/rich-text-types';
 import { AvatarSimple, AvatarProfile } from '@/app/_components/avatar';
 import { formatDateTimeInKanjiSeparator } from '@/app/_utils';
+import ScreenMoveButton from '@/app/_components/screen-move-button';
 
 interface Params {
   params: {
@@ -10,7 +11,7 @@ interface Params {
   };
 }
 
-interface Blog {
+interface BlogArticle {
   id: string;
   title: string;
   contents?: {
@@ -57,7 +58,7 @@ async function getBlogArticle(blogId: string) {
 
 export default async function Blog({ params }: Params) {
   const blogId = params.blog_id;
-  const blog: Blog = await getBlogArticle(blogId);
+  const blog: BlogArticle = await getBlogArticle(blogId);
 
   return (
     <main className="min-h-screen">
@@ -90,14 +91,28 @@ export default async function Blog({ params }: Params) {
                         {children}
                       </h2>
                     ),
-                    p: ({ children }) => (
-                      <p className="leading-7">{children}</p>
+                    p: ({ children }: any) =>
+                      children?.props.content[0].text ? (
+                        <p className="leading-7">{children}</p>
+                      ) : (
+                        <br />
+                      ),
+                    ol: ({ children }) => (
+                      <ol className="list-decimal leading-7 ml-6">
+                        {children}
+                      </ol>
+                    ),
+                    li: ({ children }) => (
+                      <li className="pl-1.5">{children}</li>
                     ),
                   }}
                 />
               </section>
             )}
             <AvatarProfile />
+            <section className="mt-10 flex justify-center">
+              <ScreenMoveButton href="/blogs" title="ブログ一覧に戻る" />
+            </section>
           </section>
         </section>
       </section>
