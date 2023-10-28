@@ -48,7 +48,7 @@ export default function Home() {
     <main className="relative">
       <section className="relative h-screen">
         <Image
-          src="/images/top.jpg"
+          src="/images/plant.jpg"
           fill={true}
           style={{ objectFit: 'cover' }}
           alt="植物の画像"
