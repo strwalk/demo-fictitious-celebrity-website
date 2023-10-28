@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { AvatarSimple } from '../_components/avatar';
@@ -23,6 +24,10 @@ interface BlogCardProps {
   contents: string;
   createdAt: string;
 }
+
+export const metadata: Metadata = {
+  title: 'Blog List',
+};
 
 async function getBlogList() {
   const response = await fetch(`${process.env.HYGRAPH_ENDPOINT}`, {
