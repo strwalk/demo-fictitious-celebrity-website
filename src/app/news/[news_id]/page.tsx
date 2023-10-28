@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import {
   convertToAnArrayOfNewlineCodes,
   formatWithCommaSeparatedDates,
@@ -16,6 +17,10 @@ interface News {
   contents?: string;
   createdAt: string;
 }
+
+export const metadata: Metadata = {
+  title: 'News',
+};
 
 async function getNewsArticle(newsId: string) {
   const response = await fetch(`${process.env.HYGRAPH_ENDPOINT}`, {
