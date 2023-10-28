@@ -48,13 +48,13 @@ export default function Home() {
         <Image
           src="/images/plant.jpg"
           fill={true}
-          style={{ objectFit: 'cover' }}
+          priority={true}
           alt="植物の画像"
-          className="z-[-1]"
+          className="object-cover z-[-1] object-[35%_top] sm:object-left-top lg:object-right-top"
         />
         <section className="relative top-40 sm:absolute sm:top-[40%] sm:left-[10%]">
           <h1 className="flex flex-col text-center">
-            <span className="text-4xl md:text-6xl lg:text-7xl">
+            <span className="text-5xl sm:text-6xl lg:text-7xl">
               {profileName}
             </span>
             <span className="mt-1 md:mt-3 md:text-xl">Official Website</span>
