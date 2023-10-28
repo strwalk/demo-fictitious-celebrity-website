@@ -55,6 +55,11 @@ async function getBlogList() {
       `,
     }),
   });
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch Blogs data');
+  }
+
   const json = await response.json();
   return json.data.blogs;
 }
