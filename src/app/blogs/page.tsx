@@ -7,7 +7,7 @@ import { formatDateTimeInKanjiSeparator } from '../_utils';
 interface Blog {
   id: string;
   title: string;
-  contents?: {
+  contents: {
     text: string;
   };
   thumbnail?: {
@@ -112,7 +112,7 @@ export default async function BlogList() {
                 href={`/blogs/${blog.id}`}
                 title={blog.title}
                 imageSrc={blog.thumbnail?.url ?? ''}
-                contents={blog.contents?.text ?? ''}
+                contents={blog.contents.text}
                 createdAt={blog.createdAt}
               />
             ))}
