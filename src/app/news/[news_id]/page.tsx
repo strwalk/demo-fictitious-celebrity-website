@@ -56,7 +56,7 @@ export default async function NewsArticle({ params }: Params) {
 
   return (
     <main className="bg-green-light min-h-screen">
-      <section className="flex justify-center pt-20 pb-20">
+      <section className="flex justify-center pt-24 pb-28">
         <section className="w-full max-w-screen-md mx-5 md:mx-10">
           <section className="bg-white rounded-lg shadow-md px-4 sm:px-8 md:px-16 pt-10 pb-6 mt-6">
             <h1 className="text-lg sm:text-xl text-center border-b-[1.4px] border-green pb-2 px-1">
