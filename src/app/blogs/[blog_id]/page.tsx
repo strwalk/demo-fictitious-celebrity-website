@@ -89,6 +89,7 @@ export default async function Blog({ params }: Params) {
               size="small"
               date={formatDateTimeInKanjiSeparator(blog.createdAt)}
               hasLink={true}
+              hasTooltip={true}
             />
             {blog.contents && (
               <section className="mt-10 mb-12">
