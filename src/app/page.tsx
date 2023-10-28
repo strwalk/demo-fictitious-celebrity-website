@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image, { StaticImageData } from 'next/image';
 import { HiOutlineChevronRight } from 'react-icons/hi';
@@ -15,6 +16,10 @@ interface DetailLinkProps {
   href: string;
   title: string;
 }
+
+export const metadata: Metadata = {
+  title: 'Top | Fictitious Website',
+};
 
 const ContentsImage = ({ src, alt }: ImagesProps) => {
   return (
