@@ -19,6 +19,7 @@ export default function DropDownMenu() {
       </DropdownTrigger>
       <DropdownMenu
         aria-label="menu"
+        variant="flat"
         onAction={(key) => router.push(key.toString())}
       >
         <DropdownItem key="/">Top</DropdownItem>
