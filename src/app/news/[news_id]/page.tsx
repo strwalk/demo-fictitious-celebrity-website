@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { redirect } from 'next/navigation';
 import {
   convertToAnArrayOfNewlineCodes,
   formatWithCommaSeparatedDates,
@@ -49,13 +50,16 @@ async function getNewsArticle(newsId: string) {
 export default async function NewsArticle({ params }: Params) {
   const newsId = params.news_id;
   const news: News = await getNewsArticle(newsId);
+  if (!news) {
+    redirect('/not-found');
+  }
 
   return (
     <main className="bg-green-light min-h-screen">
       <section className="flex justify-center pt-20 pb-20">
         <section className="w-full max-w-screen-md mx-5 md:mx-10">
           <section className="bg-white rounded-lg shadow-md px-4 sm:px-8 md:px-16 pt-10 pb-6 mt-6">
-            <h1 className="text-xl text-center border-b-[1.4px] border-green pb-2 px-1">
+            <h1 className="text-lg sm:text-xl text-center border-b-[1.4px] border-green pb-2 px-1">
               {news.title}
             </h1>
             <section className="mt-5 px-1 leading-8">
