@@ -14,6 +14,9 @@ export default function Footer() {
         <small>
           &copy;{copyrightYear()} {profileName}
         </small>
+        <p className="text-xs mt-1">
+          これはデモ画面です。登場する人物・団体・名称等は架空であり、実在のものとは関係ありません
+        </p>
       </section>
     </footer>
   );
