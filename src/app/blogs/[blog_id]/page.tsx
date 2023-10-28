@@ -109,6 +109,9 @@ export default async function Blog({ params }: Params) {
                     ) : (
                       <br />
                     ),
+                  ul: ({ children }) => (
+                    <ul className="list-disc leading-7 ml-6">{children}</ul>
+                  ),
                   ol: ({ children }) => (
                     <ol className="list-decimal leading-7 ml-6">{children}</ol>
                   ),
