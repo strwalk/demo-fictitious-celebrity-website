@@ -43,6 +43,11 @@ async function getNewsArticle(newsId: string) {
       `,
     }),
   });
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch News data');
+  }
+
   const json = await response.json();
   return json.data.news;
 }
