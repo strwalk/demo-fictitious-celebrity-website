@@ -31,7 +31,12 @@ const ContentsImage = ({ src, alt }: ImagesProps) => {
 const DetailLink = ({ href, title }: DetailLinkProps) => {
   return (
     <section className="mt-10 flex justify-center">
-      <ScreenMoveButton href={href} title={title} size="big" />
+      <ScreenMoveButton
+        href={href}
+        title={title}
+        size="big"
+        arrowDirection="right"
+      />
     </section>
   );
 };

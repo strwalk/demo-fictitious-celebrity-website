@@ -121,7 +121,11 @@ export default async function Blog({ params }: Params) {
             </section>
             <AvatarProfile />
             <section className="mt-8 md:mt-10 flex justify-center">
-              <ScreenMoveButton href="/blogs" title="ブログ一覧に戻る" />
+              <ScreenMoveButton
+                href="/blogs"
+                title="ブログ一覧に戻る"
+                arrowDirection="left"
+              />
             </section>
           </section>
         </section>

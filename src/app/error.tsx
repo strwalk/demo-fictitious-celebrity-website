@@ -22,7 +22,11 @@ export default function Error({
       <section>
         <h1 className="text-2xl text-center">エラーが発生しました</h1>
         <section className="flex justify-center mt-8">
-          <ScreenMoveButton href="/" title="トップページへ戻る" />
+          <ScreenMoveButton
+            href="/"
+            title="トップページへ戻る"
+            arrowDirection="left"
+          />
         </section>
       </section>
     </main>

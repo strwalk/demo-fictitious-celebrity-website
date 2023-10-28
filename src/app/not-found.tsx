@@ -20,7 +20,11 @@ export default function NotFound() {
           </p>
         </section>
         <section className="flex justify-center mt-8">
-          <ScreenMoveButton href="/" title="トップページへ戻る" />
+          <ScreenMoveButton
+            href="/"
+            title="トップページへ戻る"
+            arrowDirection="left"
+          />
         </section>
       </section>
     </main>

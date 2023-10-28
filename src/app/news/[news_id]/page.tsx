@@ -80,7 +80,11 @@ export default async function NewsArticle({ params }: Params) {
             </section>
           </section>
           <section className="mt-10 flex justify-center">
-            <ScreenMoveButton href="/news" title="ニュース一覧に戻る" />
+            <ScreenMoveButton
+              href="/news"
+              title="ニュース一覧に戻る"
+              arrowDirection="left"
+            />
           </section>
         </section>
       </section>
