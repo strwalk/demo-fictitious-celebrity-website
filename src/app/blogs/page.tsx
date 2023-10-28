@@ -97,7 +97,7 @@ export default async function BlogList() {
 
   return (
     <main className="bg-green-light min-h-screen">
-      <section className="flex justify-center pt-24 pb-20">
+      <section className="flex justify-center pt-24 pb-28">
         <section className="sm:w-[28rem] md:w-[70rem] px-4 sm:px-8">
           <h1 className="text-3xl text-center">Blog</h1>
           <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-8">
