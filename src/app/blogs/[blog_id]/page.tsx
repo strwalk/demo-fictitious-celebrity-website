@@ -80,7 +80,7 @@ export default async function Blog({ params }: Params) {
         <section>
           <section className="flex justify-center">
             <Image
-              src={blog.thumbnail?.url ?? ''}
+              src={blog.thumbnail?.url ?? '/images/plant.jpg'}
               width={300}
               height={300}
               alt={blog.title}

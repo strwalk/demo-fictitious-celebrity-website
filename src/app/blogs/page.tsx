@@ -111,7 +111,7 @@ export default async function BlogList() {
                 key={blog.id}
                 href={`/blogs/${blog.id}`}
                 title={blog.title}
-                imageSrc={blog.thumbnail?.url ?? ''}
+                imageSrc={blog.thumbnail?.url ?? '/images/plant.jpg'}
                 contents={blog.contents.text}
                 createdAt={blog.createdAt}
               />
