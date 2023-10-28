@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { redirect } from 'next/navigation';
 import Image from 'next/image';
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import { ElementNode } from '@graphcms/rich-text-types';
@@ -64,6 +65,9 @@ async function getBlogArticle(blogId: string) {
 export default async function Blog({ params }: Params) {
   const blogId = params.blog_id;
   const blog: BlogArticle = await getBlogArticle(blogId);
+  if (!blog) {
+    redirect('/not-found');
+  }
 
   return (
     <main className="min-h-screen">
