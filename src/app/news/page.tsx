@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { formatWithCommaSeparatedDates } from '../_utils';
 
@@ -6,6 +7,10 @@ interface News {
   title: string;
   createdAt: string;
 }
+
+export const metadata: Metadata = {
+  title: 'News List',
+};
 
 async function getNewsList() {
   const response = await fetch(`${process.env.HYGRAPH_ENDPOINT}`, {
