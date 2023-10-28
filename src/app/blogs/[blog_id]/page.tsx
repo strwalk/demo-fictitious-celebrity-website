@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import { ElementNode } from '@graphcms/rich-text-types';
@@ -25,6 +26,10 @@ interface BlogArticle {
   };
   createdAt: string;
 }
+
+export const metadata: Metadata = {
+  title: 'Blog',
+};
 
 async function getBlogArticle(blogId: string) {
   const response = await fetch(`${process.env.HYGRAPH_ENDPOINT}`, {
