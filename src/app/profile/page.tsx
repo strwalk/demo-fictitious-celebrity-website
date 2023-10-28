@@ -1,5 +1,10 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import { profileName } from '../_constants';
+
+export const metadata: Metadata = {
+  title: 'Profile',
+};
 
 export default function Profile() {
   return (
