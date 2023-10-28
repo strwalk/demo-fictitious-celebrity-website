@@ -1,11 +1,10 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import Image, { StaticImageData } from 'next/image';
-import { HiOutlineChevronRight } from 'react-icons/hi';
 import imageCoffee from '../../public/images/coffee.jpeg';
 import imageSofa from '../../public/images/sofa.jpeg';
 import imageFlower from '../../public/images/flower.jpeg';
 import { profileName } from './_constants';
+import ScreenMoveButton from './_components/screen-move-button';
 
 interface ImagesProps {
   src: StaticImageData;
@@ -32,13 +31,12 @@ const ContentsImage = ({ src, alt }: ImagesProps) => {
 const DetailLink = ({ href, title }: DetailLinkProps) => {
   return (
     <section className="mt-10 flex justify-center">
-      <Link
+      <ScreenMoveButton
         href={href}
-        className="flex justify-center gap-2 items-center px-10 py-2.5 text-center rounded-md shadow bg-green text-white hover:bg-green-light hover:text-black"
-      >
-        <span className="text-lg">{title}</span>
-        <HiOutlineChevronRight />
-      </Link>
+        title={title}
+        size="big"
+        arrowDirection="right"
+      />
     </section>
   );
 };
@@ -48,7 +46,7 @@ export default function Home() {
     <main className="relative">
       <section className="relative h-screen">
         <Image
-          src="/images/top.jpg"
+          src="/images/plant.jpg"
           fill={true}
           style={{ objectFit: 'cover' }}
           alt="植物の画像"

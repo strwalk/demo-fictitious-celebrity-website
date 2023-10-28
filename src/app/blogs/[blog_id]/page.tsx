@@ -16,7 +16,7 @@ interface Params {
 interface BlogArticle {
   id: string;
   title: string;
-  contents?: {
+  contents: {
     raw: {
       children: ElementNode[];
     };
@@ -80,7 +80,7 @@ export default async function Blog({ params }: Params) {
         <section>
           <section className="flex justify-center">
             <Image
-              src={blog.thumbnail?.url ?? ''}
+              src={blog.thumbnail?.url ?? '/images/plant.jpg'}
               width={300}
               height={300}
               alt={blog.title}
@@ -96,37 +96,36 @@ export default async function Blog({ params }: Params) {
               hasLink={true}
               hasTooltip={true}
             />
-            {blog.contents && (
-              <section className="mt-10 mb-12">
-                <RichText
-                  content={blog.contents.raw}
-                  renderers={{
-                    h2: ({ children }) => (
-                      <h2 className="text-xl font-bold mt-6 mb-2">
-                        {children}
-                      </h2>
+            <section className="mt-10 mb-12">
+              <RichText
+                content={blog.contents.raw}
+                renderers={{
+                  h2: ({ children }) => (
+                    <h2 className="text-xl font-bold mt-6 mb-2">{children}</h2>
+                  ),
+                  p: ({ children }: any) =>
+                    children?.props.content[0].text ? (
+                      <p className="leading-7">{children}</p>
+                    ) : (
+                      <br />
                     ),
-                    p: ({ children }: any) =>
-                      children?.props.content[0].text ? (
-                        <p className="leading-7">{children}</p>
-                      ) : (
-                        <br />
-                      ),
-                    ol: ({ children }) => (
-                      <ol className="list-decimal leading-7 ml-6">
-                        {children}
-                      </ol>
-                    ),
-                    li: ({ children }) => (
-                      <li className="pl-1.5">{children}</li>
-                    ),
-                  }}
-                />
-              </section>
-            )}
+                  ul: ({ children }) => (
+                    <ul className="list-disc leading-7 ml-6">{children}</ul>
+                  ),
+                  ol: ({ children }) => (
+                    <ol className="list-decimal leading-7 ml-6">{children}</ol>
+                  ),
+                  li: ({ children }) => <li className="pl-1.5">{children}</li>,
+                }}
+              />
+            </section>
             <AvatarProfile />
             <section className="mt-8 md:mt-10 flex justify-center">
-              <ScreenMoveButton href="/blogs" title="ブログ一覧に戻る" />
+              <ScreenMoveButton
+                href="/blogs"
+                title="ブログ一覧に戻る"
+                arrowDirection="left"
+              />
             </section>
           </section>
         </section>

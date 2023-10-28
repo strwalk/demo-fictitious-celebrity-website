@@ -7,7 +7,7 @@ import { formatDateTimeInKanjiSeparator } from '../_utils';
 interface Blog {
   id: string;
   title: string;
-  contents?: {
+  contents: {
     text: string;
   };
   thumbnail?: {
@@ -39,7 +39,7 @@ async function getBlogList() {
     body: JSON.stringify({
       query: `
         query Blogs {
-          blogs {
+          blogs(orderBy: createdAt_DESC) {
             id
             title
             contents {
@@ -111,8 +111,8 @@ export default async function BlogList() {
                 key={blog.id}
                 href={`/blogs/${blog.id}`}
                 title={blog.title}
-                imageSrc={blog.thumbnail?.url ?? ''}
-                contents={blog.contents?.text ?? ''}
+                imageSrc={blog.thumbnail?.url ?? '/images/plant.jpg'}
+                contents={blog.contents.text}
                 createdAt={blog.createdAt}
               />
             ))}

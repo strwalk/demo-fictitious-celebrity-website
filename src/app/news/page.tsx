@@ -22,7 +22,7 @@ async function getNewsList() {
     body: JSON.stringify({
       query: `
         query NewsList {
-          newsList {
+          newsList(orderBy: createdAt_DESC) {
             id
             title
             createdAt
