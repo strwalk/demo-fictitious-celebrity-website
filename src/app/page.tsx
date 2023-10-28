@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image, { StaticImageData } from 'next/image';
 import { HiOutlineChevronRight } from 'react-icons/hi';
@@ -15,6 +16,10 @@ interface DetailLinkProps {
   href: string;
   title: string;
 }
+
+export const metadata: Metadata = {
+  title: 'Top | Fictitious Website',
+};
 
 const ContentsImage = ({ src, alt }: ImagesProps) => {
   return (
@@ -58,8 +63,8 @@ export default function Home() {
           </h1>
         </section>
       </section>
-      <section className="px-10">
-        <section className="grid grid-cols-1 md:grid-cols-2 justify-center gap-6 py-16">
+      <section className="md:px-10 pb-10">
+        <section className="grid grid-cols-1 md:grid-cols-2 justify-center gap-6 py-16 px-8">
           <section className="flex justify-center items-center">
             <section>
               <h2 className="text-4xl text-center">News</h2>
@@ -70,7 +75,7 @@ export default function Home() {
           </section>
           <ContentsImage src={imageCoffee} alt="コーヒーの画像" />
         </section>
-        <section className="grid grid-cols-1 md:grid-cols-2 justify-center gap-6 py-16 bg-green-light">
+        <section className="grid grid-cols-1 md:grid-cols-2 justify-center gap-6 py-16 px-8 bg-green-light">
           <ContentsImage src={imageSofa} alt="imageSofa" />
           <section className="flex justify-center items-center">
             <section>
@@ -82,7 +87,7 @@ export default function Home() {
             </section>
           </section>
         </section>
-        <section className="grid grid-cols-1 md:grid-cols-2 justify-center gap-6 py-16">
+        <section className="grid grid-cols-1 md:grid-cols-2 justify-center gap-6 py-16 px-8">
           <section className="flex justify-center items-center">
             <section>
               <h2 className="text-4xl text-center">Blog</h2>

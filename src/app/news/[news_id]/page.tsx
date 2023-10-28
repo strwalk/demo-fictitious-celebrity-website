@@ -1,8 +1,10 @@
-import Link from 'next/link';
+import type { Metadata } from 'next';
+import { redirect } from 'next/navigation';
 import {
   convertToAnArrayOfNewlineCodes,
   formatWithCommaSeparatedDates,
 } from '@/app/_utils';
+import ScreenMoveButton from '@/app/_components/screen-move-button';
 
 interface Params {
   params: {
@@ -16,6 +18,10 @@ interface News {
   contents?: string;
   createdAt: string;
 }
+
+export const metadata: Metadata = {
+  title: 'News',
+};
 
 async function getNewsArticle(newsId: string) {
   const response = await fetch(`${process.env.HYGRAPH_ENDPOINT}`, {
@@ -44,13 +50,16 @@ async function getNewsArticle(newsId: string) {
 export default async function NewsArticle({ params }: Params) {
   const newsId = params.news_id;
   const news: News = await getNewsArticle(newsId);
+  if (!news) {
+    redirect('/not-found');
+  }
 
   return (
     <main className="bg-green-light min-h-screen">
-      <section className="flex justify-center pt-20 pb-20">
-        <section className="w-full max-w-screen-md mx-10">
-          <section className="bg-white rounded-lg shadow-md px-16 pt-10 pb-6 mt-6">
-            <h1 className="text-xl text-center border-b-[1.4px] border-green pb-2 px-1">
+      <section className="flex justify-center pt-24 pb-28">
+        <section className="w-full max-w-screen-md mx-5 md:mx-10">
+          <section className="bg-white rounded-lg shadow-md px-4 sm:px-8 md:px-16 pt-10 pb-6 mt-6">
+            <h1 className="text-lg sm:text-xl text-center border-b-[1.4px] border-green pb-2 px-1">
               {news.title}
             </h1>
             <section className="mt-5 px-1 leading-8">
@@ -66,12 +75,7 @@ export default async function NewsArticle({ params }: Params) {
             </section>
           </section>
           <section className="mt-10 flex justify-center">
-            <Link
-              href="/news"
-              className="bg-green hover:bg-gray text-white hover:text-black py-3 px-8 text-center rounded shadow text-sm font-bold hover:font-normal"
-            >
-              ニュース一覧に戻る
-            </Link>
+            <ScreenMoveButton href="/news" title="ニュース一覧に戻る" />
           </section>
         </section>
       </section>

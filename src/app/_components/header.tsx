@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { profileName } from '../_constants';
+import DropDownMenu from './drop-down-menu';
 
 interface MenuLinkProps {
   href: string;
@@ -23,11 +24,14 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 bg-white z-50">
       <section className="flex justify-between items-center">
-        <Link href="/" className="block px-5 py-3 hover:bg-green-light">
+        <Link
+          href="/"
+          className="flex items-end flex-wrap gap-x-0.5 px-5 py-3 hover:bg-green-light"
+        >
           <span className="text-xl">{profileName}</span>
-          <span className="ml-[0.1rem] text-sm">Official Website</span>
+          <span className="text-xs mb-1">Official Website</span>
         </Link>
-        <nav>
+        <nav className="hidden md:block">
           <ul className="flex flex-wrap sm:text-lg">
             <MenuLink href="/" title="Top" />
             <MenuLink href="/news" title="News" />
@@ -35,6 +39,9 @@ export default function Header() {
             <MenuLink href="/blogs" title="Blog" />
           </ul>
         </nav>
+        <section className="md:hidden mr-3">
+          <DropDownMenu />
+        </section>
       </section>
     </header>
   );

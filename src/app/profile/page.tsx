@@ -1,25 +1,30 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import { profileName } from '../_constants';
+
+export const metadata: Metadata = {
+  title: 'Profile',
+};
 
 export default function Profile() {
   return (
     <main className="bg-green-light">
-      <section className="pt-28 pb-20 flex justify-center px-5 sm:px-10 xl:px-20">
-        <section className="bg-white rounded-2xl shadow-md w-full sm:mx-5 md:mx-10 lg:mx-20 px-5 sm:px-10 lg:px-5 py-16 flex justify-center">
+      <section className="pt-24 pb-28 flex justify-center">
+        <section className="bg-white rounded-2xl shadow-md w-full max-w-[52rem] mx-4 sm:mx-8 py-16 flex justify-center px-5">
           <section>
             <h1 className="text-3xl text-center">Profile</h1>
             <section className="mt-5 flex justify-center">
               <Image
                 src="/images/lion.jpeg"
-                width={580}
-                height={580}
+                width={300}
+                height={300}
                 priority={true}
                 alt="プロフィール画像"
-                className="w-[33rem] h-[20rem] object-cover object-right-top"
+                className="w-[26rem] md:w-[33rem] h-[15rem] md:h-[20rem] object-cover object-center md:object-right-top"
               />
             </section>
-            <section className="flex flex-wrap gap-x-1 items-end mt-10">
-              <h2 className="text-3xl">{profileName}</h2>
+            <section className="flex flex-wrap gap-x-0.5 sm:gap-x-1 items-end mt-10">
+              <h2 className="text-2xl sm:text-3xl">{profileName}</h2>
               <p>Hikari Aohoshi</p>
             </section>
             <ul className="mt-6 leading-7">

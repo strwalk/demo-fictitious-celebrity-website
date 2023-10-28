@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { AvatarSimple } from '../_components/avatar';
@@ -6,7 +7,9 @@ import { formatDateTimeInKanjiSeparator } from '../_utils';
 interface Blog {
   id: string;
   title: string;
-  contents?: string;
+  contents?: {
+    text: string;
+  };
   thumbnail?: {
     id: string;
     url: string;
@@ -22,6 +25,10 @@ interface BlogCardProps {
   createdAt: string;
 }
 
+export const metadata: Metadata = {
+  title: 'Blog List',
+};
+
 async function getBlogList() {
   const response = await fetch(`${process.env.HYGRAPH_ENDPOINT}`, {
     method: 'POST',
@@ -35,7 +42,9 @@ async function getBlogList() {
           blogs {
             id
             title
-            contents
+            contents {
+              text
+            }
             thumbnail {
               id
               url
@@ -60,7 +69,7 @@ const BlogCard = ({
   return (
     <Link
       href={href}
-      className="px-8 pt-7 pb-6 bg-white rounded-md shadow hover:bg-gray"
+      className="px-5 sm:px-8 pt-7 pb-6 bg-white rounded-md shadow hover:bg-gray"
     >
       <section className="flex justify-center">
         <Image
@@ -72,7 +81,9 @@ const BlogCard = ({
         />
       </section>
       <h2 className="mt-4 text-lg line-clamp-2">{title}</h2>
-      <p className="text-xs mt-2 line-clamp-2 mb-4">{contents}</p>
+      <p className="text-xs mt-2 line-clamp-2 mb-4">
+        {contents.replace(/\\n/g, '')}
+      </p>
       <AvatarSimple
         size="extraSmall"
         date={formatDateTimeInKanjiSeparator(createdAt)}
@@ -86,8 +97,8 @@ export default async function BlogList() {
 
   return (
     <main className="bg-green-light min-h-screen">
-      <section className="flex justify-center pt-24 pb-20">
-        <section className="sm:w-[28rem] md:w-[70rem] px-8">
+      <section className="flex justify-center pt-24 pb-28">
+        <section className="sm:w-[28rem] md:w-[70rem] px-4 sm:px-8">
           <h1 className="text-3xl text-center">Blog</h1>
           <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-8">
             {blogList.map((blog: Blog) => (
@@ -96,7 +107,7 @@ export default async function BlogList() {
                 href={`/blogs/${blog.id}`}
                 title={blog.title}
                 imageSrc={blog.thumbnail?.url ?? ''}
-                contents={blog.contents ?? ''}
+                contents={blog.contents?.text ?? ''}
                 createdAt={blog.createdAt}
               />
             ))}
