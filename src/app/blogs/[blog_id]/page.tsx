@@ -58,6 +58,11 @@ async function getBlogArticle(blogId: string) {
       `,
     }),
   });
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch Blog data');
+  }
+
   const json = await response.json();
   return json.data.blog;
 }
@@ -71,7 +76,7 @@ export default async function Blog({ params }: Params) {
 
   return (
     <main className="min-h-screen">
-      <section className="flex justify-center pt-20 pb-24">
+      <section className="flex justify-center pt-20 pb-28">
         <section>
           <section className="flex justify-center">
             <Image
@@ -120,7 +125,7 @@ export default async function Blog({ params }: Params) {
               </section>
             )}
             <AvatarProfile />
-            <section className="mt-10 flex justify-center">
+            <section className="mt-8 md:mt-10 flex justify-center">
               <ScreenMoveButton href="/blogs" title="ブログ一覧に戻る" />
             </section>
           </section>
