@@ -39,7 +39,7 @@ async function getBlogList() {
     body: JSON.stringify({
       query: `
         query Blogs {
-          blogs {
+          blogs(orderBy: createdAt_DESC) {
             id
             title
             contents {
