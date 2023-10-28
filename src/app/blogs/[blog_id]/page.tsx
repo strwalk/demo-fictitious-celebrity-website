@@ -80,10 +80,10 @@ export default async function Blog({ params }: Params) {
               height={300}
               alt={blog.title}
               priority={true}
-              className="h-[18rem] w-[34rem] object-cover"
+              className="h-[14rem] sm:h-[18rem] w-[28rem] sm:w-[34rem] object-cover"
             />
           </section>
-          <section className="sm:w-[28rem] md:w-[35rem] px-4">
+          <section className="w-full md:w-[35rem] px-8">
             <h1 className="text-3xl font-bold mt-10 mb-4">{blog.title}</h1>
             <AvatarSimple
               size="small"
