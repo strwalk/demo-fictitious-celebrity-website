@@ -31,6 +31,11 @@ async function getNewsList() {
       `,
     }),
   });
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch NewsList data');
+  }
+
   const json = await response.json();
   return json.data.newsList;
 }
