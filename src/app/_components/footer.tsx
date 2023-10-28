@@ -9,7 +9,7 @@ const copyrightYear = (): string => {
 
 export default function Footer() {
   return (
-    <footer className="bg-gray py-2 sm:py-3 absolute bottom-0 w-screen">
+    <footer className="bg-gray py-2 sm:py-3 absolute bottom-0 w-screen px-4">
       <section className="text-center">
         <small>
           &copy;{copyrightYear()} {profileName}
