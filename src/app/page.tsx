@@ -50,7 +50,7 @@ export default function Home() {
           fill={true}
           priority={true}
           alt="植物の画像"
-          className="object-cover z-[-1] object-[45%_top] sm:object-left-top lg:object-right-top xl:object-center"
+          className="object-cover z-[-1] object-[41%_top] sm:object-left-top lg:object-right-top xl:object-center"
         />
         <section className="relative top-40 sm:absolute sm:top-[40%] sm:left-[10%]">
           <h1 className="flex flex-col text-center">

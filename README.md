@@ -1,34 +1,161 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Fictitious Celebrity Website
+
+架空の芸能人の Web サイト（デモページ）
 
 ## Getting Started
 
-First, run the development server:
+1. GitHub リポジトリのクローン
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+   ```sh
+   # HTTPSの場合
+   git clone https://github.com/strwalk/demo-fictitious-celebrity-website.git
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   # SSHの場合
+   git clone git@github.com:strwalk/demo-fictitious-celebrity-website.git
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. プロジェクト内への移動
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```sh
+   cd demo-fictitious-celebrity-website
+   ```
 
-## Learn More
+3. 依存関係のインストール
 
-To learn more about Next.js, take a look at the following resources:
+   ```sh
+   yarn install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Hygraph の設定
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Hygraph にログイン／サインアップし、新規プロジェクトを作成
+- 作成したプロジェクトを選択
+- Models の作成
 
-## Deploy on Vercel
+  - Scheme > 「+Add」ボタンをクリックし、下記の設定で各種作成
+  - Blog
+    - Display name: `Blog`
+    - API ID: `Blog`
+    - Plural API ID: `Blogs`
+  - News
+    - Display name: `News`
+    - API ID: `News`
+    - Plural API ID: `NewsList`
+  - Profile
+    - Display name: `Profile`
+    - API ID: `Profile`
+    - Plural API ID: `Profiles`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   <details>
+   <summary>Fields の作成</summary>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+  - 下記の設定で各種作成
+  - Blog
+    - Scheme > Blog を選択
+    - Title
+      - Add Fields > Single Line Text を選択
+        - SETTINGS を開く
+          - Display name: `Title`
+          - API ID: `title`
+        - VALIDATIONS を開く
+          - Make field required にチェックを入れる
+    - Thumbnail（操作は上記と同様。以下、設定内容のみ記載）
+      - Asset picker
+      - Display name: `Thumbnail`
+      - API ID: `thumbnail`
+    - Contents
+      - Rich text
+      - Display name: `Contents`
+      - API ID: `contents`
+      - Make field required にチェック
+  - News
+    - Scheme > News を選択
+    - Title
+      - Single Line Text
+      - Display name: `Title`
+      - API ID: `title`
+      - Make field required にチェック
+    - Contents
+      - Multi line text
+      - Display name: `Contents`
+      - API ID: `contents`
+  - Profile
+    - information
+      - Single line text
+      - Display name: `information`
+      - API ID: `information`
+      - Allow multiple values にチェック
+      - Make field required にチェック
+    - Histories
+      - Single line text
+      - Display name: `Histories`
+      - API ID: `histories`
+      - Allow multiple values にチェック
+      - Make field required にチェック
+
+   </details>
+
+- Assets の作成
+  - Assets > Asset > 「+ Add entry」をクリック
+  - 任意の画像をアップロード
+- Contents の作成
+  - Blog
+    - Contents > Blog + 「+ Add entry」をクリック
+    - Title、Thumbnail、Contents を任意の内容で入力
+    - 「Save」ボタンをクリック
+    - 任意の回数繰り返す
+  - News、Profile でも、同様の操作を行う
+- Permanent Auth Tokens の設定
+  - Project Settings > Settings > Access > API Access > Permanent Auth Tokens > 「+ Add token」をクリック
+  - 任意の名前で Token name を設定
+  - Content API > 「+ Add permission」をクリック
+    - Model: Asset、Rules: Read を設定
+    - Model: Blog、Rules: Read を設定
+    - Model: News、Rules: Read を設定
+    - Model: Profile、Rules: Read を設定
+
+5. `.env`ファイルの設定
+
+- プロジェクト直下に`.env.local`を作成
+
+  ```sh
+  touch .env.local
+  ```
+
+- `.env`に下記を追加
+
+  ```sh
+  HYGRAPH_ENDPOINT=XXXXX
+  PERMANENT_AUTH_TOKEN=XXXXX
+  ASSET_HOSTNAME=XXXXX
+  ```
+
+  - `HYGRAPH_ENDPOINT`の値は、Hygraph の管理画面から、プロジェクト選択 > Project settings > Settings > Access > API Access > Endpoints > Content API で取得可能
+  - `PERMANENT_AUTH_TOKEN`の値は、Project settings > Settings > Access > API Access > Permanent Auth Tokens > EXISTING TOKENS > Value をクリックで取得可能
+  - ASSET_HOSTNAME の値は、Hygraph を使用する場合は、`media.graphassets.com`を指定
+    - 外部ドメインの画像を使用するための設定
+
+6. プロジェクトの起動
+
+   ```sh
+   yarn dev
+   ```
+
+7. ブラウザで確認
+
+- [http://localhost:3000](http://localhost:3000) を開く
+
+## Built With
+
+- [Next.js](https://nextjs.org/) - The React Framework for the Web
+- [React](https://react.dev/) - The library for web and native user interfaces
+- [TypeScript](https://www.typescriptlang.org/) - TypeScript is JavaScript with syntax for types
+- [Node.js](https://nodejs.org/en) - Node.js® is an open-source, cross-platform JavaScript runtime environment
+- [tailwindcss](https://tailwindcss.com/) - Rapidly build modern websites without ever leaving your HTML
+- [Next UI](https://nextui.org/) - Beautiful, fast and modern React UI library
+- [Hygraph](https://hygraph.com/) - Hygraph is the next generation GraphQL-Native Federated Content Platform. Integrate all your services with our unique content federation approach and deliver to any destination of choice using our content APIs
+- [Vercel](https://vercel.com/) - Vercel's Frontend Cloud gives developers the frameworks, workflows, and infrastructure to build a faster, more personalized Web
+
+## Author
+
+strwalk - https://github.com/strwalk
