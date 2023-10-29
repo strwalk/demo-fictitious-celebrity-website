@@ -1,6 +1,11 @@
 # Fictitious Celebrity Website
 
 架空の芸能人の Web サイト（デモページ）
+<br/>
+
+| 画面イメージ  |
+|  ---------  |
+| <img width="600" alt="top-page" src="https://github.com/strwalk/demo-fictitious-celebrity-website/assets/61673527/aafb6aec-52b8-445e-b2d3-24a58705c12d"> |
 
 ## Getting Started
 
@@ -30,7 +35,9 @@
 
 - Hygraph にログイン／サインアップし、新規プロジェクトを作成
 - 作成したプロジェクトを選択
-- Models の作成
+
+<details>
+<summary>Models の作成</summary>
 
   - Scheme > 「+Add」ボタンをクリックし、下記の設定で各種作成
   - Blog
@@ -45,9 +52,9 @@
     - Display name: `Profile`
     - API ID: `Profile`
     - Plural API ID: `Profiles`
-
-   <details>
-   <summary>Fields の作成</summary>
+</details>
+<details>
+<summary>Fields の作成</summary>
 
   - 下記の設定で各種作成
   - Blog
@@ -93,19 +100,26 @@
       - Allow multiple values にチェック
       - Make field required にチェック
 
-   </details>
+</details>
+<details>
+<summary>Assets の作成</summary>
 
-- Assets の作成
   - Assets > Asset > 「+ Add entry」をクリック
   - 任意の画像をアップロード
-- Contents の作成
+</details>
+<details>
+<summary>Contents の作成</summary>
+
   - Blog
     - Contents > Blog + 「+ Add entry」をクリック
     - Title、Thumbnail、Contents を任意の内容で入力
     - 「Save」ボタンをクリック
     - 任意の回数繰り返す
   - News、Profile でも、同様の操作を行う
-- Permanent Auth Tokens の設定
+</details>
+<details>
+<summary>Permanent Auth Tokens の作成</summary>
+
   - Project Settings > Settings > Access > API Access > Permanent Auth Tokens > 「+ Add token」をクリック
   - 任意の名前で Token name を設定
   - Content API > 「+ Add permission」をクリック
@@ -113,6 +127,7 @@
     - Model: Blog、Rules: Read を設定
     - Model: News、Rules: Read を設定
     - Model: Profile、Rules: Read を設定
+</details>
 
 5. `.env`ファイルの設定
 
@@ -132,7 +147,7 @@
 
   - `HYGRAPH_ENDPOINT`の値は、Hygraph の管理画面から、プロジェクト選択 > Project settings > Settings > Access > API Access > Endpoints > Content API で取得可能
   - `PERMANENT_AUTH_TOKEN`の値は、Project settings > Settings > Access > API Access > Permanent Auth Tokens > EXISTING TOKENS > Value をクリックで取得可能
-  - ASSET_HOSTNAME の値は、Hygraph を使用する場合は、`media.graphassets.com`を指定
+  - `ASSET_HOSTNAME`の値は、Hygraph を使用する場合は、`media.graphassets.com`を指定
     - 外部ドメインの画像を使用するための設定
 
 6. プロジェクトの起動
