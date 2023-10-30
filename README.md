@@ -3,7 +3,7 @@
 架空の芸能人の Web サイト（デモページ）
 <br/>
 
-// prettier-ignore
+<!-- prettier-ignore -->
 | 画面イメージ |
 | --------- |
 | <img width="600" alt="top-page" src="https://github.com/strwalk/demo-fictitious-celebrity-website/assets/61673527/aafb6aec-52b8-445e-b2d3-24a58705c12d"> |
@@ -49,7 +49,7 @@
 
 - Fields の作成
 
-  - 下記の設定で各種作成
+  - Scheme > Models > 該当の Model を選択 > Add Fields から各種作成
 
     | Model 名 | Fields           | Display name | API ID      | Make field required にチェック | Make field required にチェック |
     | -------- | ---------------- | ------------ | ----------- | ------------------------------ | ------------------------------ |
