@@ -1,22 +1,21 @@
 # Fictitious Celebrity Website
 
-架空の芸能人の Web サイト（デモページ）
+架空の芸能人の Web サイト
+
+- Demo: [https://demo-fictitious-celebrity-website.vercel.app](https://demo-fictitious-celebrity-website.vercel.app)
+
 <br/>
 
 <!-- prettier-ignore -->
 | 画面イメージ |
 | --------- |
-| <img width="600" alt="top-page" src="https://github.com/strwalk/demo-fictitious-celebrity-website/assets/61673527/aafb6aec-52b8-445e-b2d3-24a58705c12d"> |
+| <img width="500" alt="top-page" src="https://github.com/strwalk/demo-fictitious-celebrity-website/assets/61673527/aafb6aec-52b8-445e-b2d3-24a58705c12d"> |
 
 ## Getting Started
 
 1. GitHub リポジトリのクローン
 
    ```sh
-   # HTTPSの場合
-   git clone https://github.com/strwalk/demo-fictitious-celebrity-website.git
-
-   # SSHの場合
    git clone git@github.com:strwalk/demo-fictitious-celebrity-website.git
    ```
 
@@ -34,9 +33,8 @@
 
 4. Hygraph の設定
 
-- Hygraph にログイン／サインアップし、新規プロジェクトを作成
+- [Hygraph](https://hygraph.com/)にログイン／サインアップし、新規プロジェクトを作成
 - 作成したプロジェクトを選択
-
 - Models の作成
 
   - Scheme > 「+Add」ボタンをクリックし、下記の設定で各種作成
@@ -76,6 +74,7 @@
   - Project Settings > Settings > Access > API Access > Permanent Auth Tokens > 「+ Add token」をクリック
   - 任意の名前で Token name を設定
   - Content API > 「+ Add permission」をクリック
+  - 下記の設定で各種作成
 
     | Model   | Rules |
     | ------- | ----- |
