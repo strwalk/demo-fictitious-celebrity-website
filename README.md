@@ -9,7 +9,7 @@
 <!-- prettier-ignore -->
 | 画面イメージ |
 | --------- |
-| <img width="500" alt="top-page" src="https://github.com/strwalk/demo-fictitious-celebrity-website/assets/61673527/aafb6aec-52b8-445e-b2d3-24a58705c12d"> |
+| <img width="500" alt="top-page" src="https://github.com/strwalk/demo-fictitious-celebrity-website/assets/61673527/bf329fe8-579d-4d7f-969a-5ed88d89d194"> |
 
 ## Getting Started
 
