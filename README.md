@@ -49,7 +49,7 @@
 
   - Scheme > Models > 該当の Model を選択 > Add Fields から各種作成
 
-    | Model 名 | Fields           | Display name | API ID      | Make field required にチェック | Make field required にチェック |
+    | Model 名 | Fields           | Display name | API ID      | Make field required にチェック | Allow multiple values にチェック |
     | -------- | ---------------- | ------------ | ----------- | ------------------------------ | ------------------------------ |
     | Blog     | Single Line Text | Title        | title       | あり                           |                                |
     |          | Asset picker     | Thumbnail    | thumbnail   |                                |                                |
